@@ -1,8 +1,11 @@
 from strands import Agent, tool
-from strands_tools import calculator, current_time, python_repl, file_read, http_request, use_aws
+from strands_tools import use_aws, file_write
 
+SYSTEM_PROMPT = """
+YOU ARE A HELPFUL AND EXPERIENCED SRE AGENT THAT WILL CONVERSE WITH USER ABOUT THEIR AWS PROBLEM.
+"""
 # Create agent
-agent = Agent(tools=[calculator, current_time, file_read, http_request, use_aws])
+agent = Agent(tools=[use_aws, file_write], system_prompt=SYSTEM_PROMPT)
 
 # Simple continuous chat
 print("Agent ready! Type 'quit' to exit.")
